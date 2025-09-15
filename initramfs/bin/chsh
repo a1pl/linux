@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Changing shell for $USER."
+read -p "Password:" attempt
+
+if [[ "$USER" == "root" ]]; then
+    read -p "Shell location:" loc
+    rm sh
+    if [ -f "$loc" ]; then
+        ln $loc sh
+        echo "$loc linked"
+    else
+        echo "File is either a directory or nonexistent"
+    fi
+else
+    echo "Run with sudo!"
+fi
